@@ -1,0 +1,199 @@
+/* Frames */
+QFrame#animationCtrlWidget {
+  border-style: solid;
+  border-color: #3c3c3c;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  background-color: #323232;
+}
+  
+/* Labels */
+QLabel {
+  color: #8e9092;
+  border-radius: 7px;
+}
+QLabel[type="title_label"] {
+  font: bold 9pt "MS Shell Dlg 2";
+  background-color: #3c3c3c;
+}
+QLabel[type="header_label"] {
+  font: bold 8pt "MS Shell Dlg 2";
+}
+QLabel[type="sub_label"] {
+  font: 8pt "MS Shell Dlg 2";
+}
+QLabel[type="data_label"] {
+  background-color: #3c3c3c;
+  font: bold 7pt "MS Shell Dlg 2";
+}
+  
+/* LineEdits */
+QLineEdit {
+  color: #b4b4b4;
+  background-color: #464646;
+  font: 8pt "MS Shell Dlg 2";
+}
+QLineEdit:hover {
+  background-color: #505050;
+}
+QLineEdit#animDataFileLineEdit {
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+}
+QLineEdit[type="data"] {
+  border-radius: 7px;
+}
+
+/* PushButtons */
+QPushButton {
+  color: #b4b4b4;
+  max-height: 20px;
+  border-style: solid;
+  font: 8pt "MS Shell Dlg 2";
+    background-color: #464646;
+}
+QPushButton:disabled {
+  background-color: #3c3c3c;
+}
+QPushButton:hover {
+    background-color: #505050;
+}
+QPushButton[type="left_button"] {
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+}
+QPushButton[type="right_button"] {
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+QPushButton[type="round_button"] {
+  border-radius: 7px;
+}
+QPushButton#refreshButton {
+  border: none;
+  max-width: 20px;
+  qproperty-iconSize: 20px;
+  background-color: transparent;
+  qproperty-icon: url("<icons_path>/refresh.svg");
+}
+QPushButton#deleteButton {
+  border: none;
+  max-width: 20px;
+  qproperty-iconSize: 20px;
+  background-color: transparent;
+  qproperty-icon: url("<icons_path>/delete.svg");
+}
+QPushButton#animDataFileBrowseBttn {
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+/* ComboBoxes */
+QComboBox {
+  color: #b4b4b4;
+  border-radius: 7px;
+  background-color: #464646;
+	font: bold 8pt "MS Shell Dlg 2";
+}
+QComboBox QAbstractItemView {
+  outline: 0px;
+  color: #b4b4b4;
+  border-radius: 7px;
+  background-color: #464646;
+  border: 1px solid transparent;
+}
+QComboBox QAbstractItemView::item:selected {
+  color: #b4b4b4;
+  font: 8pt "MS Shell Dlg 2";
+  background-color: transparent;
+}
+QComboBox QAbstractItemView::item:hover {
+  background-color: #505050;
+}
+QComboBox::drop-down {
+  width: 20px;
+  subcontrol-position: right;
+  subcontrol-origin: content;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+QComboBox::down-arrow {
+  right: 5px;
+  image: url("<icons_path>/dropdown.svg");
+}
+QComboBox[type="title_combo_box"]::down-arrow {
+  width: 25px;
+  height: 25px;
+}
+QComboBox[type="title_combo_box"]::down-arrow:hover {
+  width: 28px;
+  height: 28px;
+}
+QComboBox[type="sub_combo_box"]::down-arrow {
+  width: 20px;
+  height: 20px;
+}
+QComboBox[type="sub_combo_box"]::down-arrow:hover {
+  width: 22px;
+  height: 22px;
+}
+
+/* TableView */
+QTableView {
+  border: none;
+  outline: none;
+  color: #b4b4b4;
+  background: #464646;
+  font: 8pt "MS Shell Dlg 2";
+  show-decoration-selected: 1;
+  alternate-background-color: #414141;
+}
+QTableView QHeaderView::section {
+  color: #b4b4b4;
+  padding-left: 5px;
+  border-bottom: 2px;
+  border-style: solid;
+  border-color: #505050;
+  background-color: #464646;
+  font: 8pt "MS Shell Dlg 2";
+}
+QTableView QHeaderView::section:first {
+  border-right: 1px;
+  border-style: solid;
+  border-color: #505050;
+}
+QTableView QHeaderView::section:middle {
+  border-left: 1px;
+  border-right: 1px;
+  border-style: solid;
+  border-color: #505050;
+}
+QTableView QHeaderView::section:last {
+  border-left: 1px;
+  border-style: solid;
+  border-color: #505050;
+}
+QTableView::item {
+  border: none;
+  outline: none;
+  color: #b4b4b4;
+  font: 8pt "MS Shell Dlg 2";
+}
+QTableView::item:hover {
+  background: #505050;
+}
+QTableView::item:selected {
+  color: #e6e6e6;
+  background: #5a5a5a;
+}
+
+/* Splitter */
+QSplitter::handle {
+  background: #3c3c3c;
+}
+QSplitter::handle:horizontal {
+  width: 1.5px;
+}
+QSplitter::handle:vertical {
+  height: 1.5px;
+}

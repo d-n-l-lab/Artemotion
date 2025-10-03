@@ -1,0 +1,84 @@
+/* Frames */
+QFrame#mainWindowTopBar {
+  background-color:  #222222;
+}
+QFrame#mainWindowContentsArea {
+  background-color: #4b4b4b;
+}
+QFrame#mainWindowBottomBar {
+  background-color: #222222;
+}
+QFrame#detailsFrame {
+  padding: 5px;
+}
+QFrame#statusFrame {
+  padding: 5px;
+}
+QFrame#versionFrame {
+  padding: 5px;
+}
+
+/* Labels */
+QLabel#windowTitleLabel {
+  color: #e2e2e2;
+  font: bold 9pt "Arial";
+}
+QLabel#detailsLabel {
+  color: #b4b4b4;
+  font: bold 9pt "Arial";
+}
+QLabel#statusLabel {
+  color: #b4b4b4;
+  font: 9pt "Arial";
+}
+QLabel#versionLabel {
+  color: #b4b4b4;
+  font: bold 9pt "Arial";
+}
+
+/* SizeGrip */
+QSizeGrip#sizeGrip {
+  width: 15px;
+  height: 15px;
+}
+
+/* PushButtons */
+QPushButton {
+  border: none;
+  color: #e2e2e2;
+  font: bold 9pt "Arial";
+  background-color: transparent;
+}
+QPushButton:hover {
+  background-color: #363636;
+}
+QPushButton::menu-indicator {
+  image: none;
+}
+QPushButton#minimizePushButton {
+  qproperty-iconSize: 25px;
+  qproperty-icon: url("<icons_path>/minimize.svg");  
+}
+QPushButton#maximizePushButton {
+  qproperty-iconSize: 25px;
+  qproperty-icon: url("<icons_path>/maximize.svg");
+}
+QPushButton#closePushButton {
+  qproperty-iconSize: 25px;
+  qproperty-icon: url("<icons_path>/close.svg");
+}
+QPushButton#closePushButton:hover {
+  background-color: #c80000;
+}
+
+/* Menu */
+QMenu {
+  color: #e2e2e2;
+  background-color: #363636;
+}
+QMenu::item:selected {
+  background-color: #222222;
+}
+QMenu::indicator {
+  qproperty-icon: url('');
+}

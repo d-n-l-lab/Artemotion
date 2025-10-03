@@ -1,0 +1,161 @@
+/* Frames */
+QFrame#simRobotCtrlWidget {
+  border-style: solid;
+  border-color: #3c3c3c;
+  border-bottom-width: 1px;
+  background-color: #323232;
+}
+
+/* GroupBox */
+QGroupBox {
+  border: none;
+  color: #8e9092;
+  background-color: transparent;
+  font: bold 8pt "MS Shell Dlg 2";
+}
+QGroupBox::title {
+	subcontrol-origin: margin;
+}
+QGroupBox::indicator {
+  border-radius: 3px;
+	background-color: #464646;
+}
+QGroupBox::indicator:checked {
+	background-color: #3dcb9d;
+}
+QGroupBox::indicator:unchecked:hover {
+  border: 1px;
+  border-style: solid;
+  border-color: #5a5a5a;
+}
+
+/* Labels */
+QLabel {
+  border-radius: 7px;
+  color: #8e9092;
+}
+QLabel#simRobotCtrlTitleLabel {
+  background-color: #3c3c3c;
+  font: bold 9pt "MS Shell Dlg 2";
+}
+QLabel[type="header_label"] {
+  font: bold 8pt "MS Shell Dlg 2";
+}
+QLabel[type="sub_label"] {
+  font: 8pt "MS Shell Dlg 2";
+}
+QLabel[type="data_label"] {
+  background-color: #3c3c3c;
+  font: bold 7pt "MS Shell Dlg 2";
+}
+
+/* LineEdits */
+QLineEdit {
+  color: #b4b4b4;
+  background-color: #464646;
+  font: 8pt "MS Shell Dlg 2";
+}
+QLineEdit:hover {
+	background-color: #505050;
+}
+QLineEdit[type="data"] {
+	border-radius: 7px;
+}
+
+/* PushButtons */
+QPushButton {
+  color: #b4b4b4;
+  border-style: solid;
+  background-color: #464646;
+  font: 8pt "MS Shell Dlg 2";
+}
+QPushButton:disabled {
+  background-color: #3c3c3c;
+}
+QPushButton:hover {
+	background-color: #505050;
+}
+QPushButton[type="left_button"] {
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+}
+QPushButton[type="right_button"] {
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+QPushButton[type="round_button"] {
+  border-radius: 7px;
+}
+QPushButton[type="neg_button"] {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  qproperty-iconSize: 20px;
+  qproperty-icon: url("<icons_path>/minimize.svg");
+}
+QPushButton[type="pos_button"] {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  qproperty-iconSize: 20px;
+  qproperty-icon: url("<icons_path>/add.svg");
+}
+
+/* ComboBoxes */
+QComboBox {
+  color: #b4b4b4;
+  border-radius: 7px;
+  background-color: #464646;
+	font: 8pt "MS Shell Dlg 2";
+}
+QComboBox QAbstractItemView {
+  outline: 0px;
+  color: #b4b4b4;
+  border-radius: 7px;
+  background-color: #464646;
+  border: 1px solid transparent;
+}
+QComboBox QAbstractItemView::item:selected {
+  color: #b4b4b4;
+  font: 8pt "MS Shell Dlg 2";
+  background-color: transparent;
+}
+QComboBox QAbstractItemView::item:hover {
+  background-color: #505050;
+}
+QComboBox::drop-down {
+  width: 20px;
+  subcontrol-position: right;
+  subcontrol-origin: content;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+QComboBox::down-arrow {
+  right: 5px;
+  image: url("<icons_path>/dropdown.svg");
+}
+QComboBox[type="sub_combo_box"]::down-arrow {
+  width: 20px;
+  height: 20px;
+}
+QComboBox[type="sub_combo_box"]::down-arrow:hover {
+  width: 22px;
+  height: 22px;
+}
+
+/* Sliders */
+QSlider::groove:horizontal {
+    border-style: solid;
+    height: 15px; /* the groove expands to the size of the slider by default. by giving it a height, it has a fixed size */
+    background: #3c3c3c; /* qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #3c3c3c, stop:1 #3c3c3c); */
+    margin: -3px 0;
+}
+
+QSlider::handle:horizontal {
+    background: #464646; /* qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f); */
+    border-style: solid;
+    width: 25px;
+    margin: -3px 0; /* handle is placed by default on the contents rect of the groove. Expand outside the groove */
+    border-radius: 3px;
+}
+QSlider::handle:hover {
+    background: #505050; /* qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f); */
+}

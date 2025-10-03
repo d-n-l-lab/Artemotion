@@ -1,0 +1,9 @@
+App:
+  name: ArteMotion
+  version: v1.0.0
+  year: 2022
+  company: Brosky Media GmBH
+  author: Ravi Sharma
+  owners:
+    - Dominik Lang
+    - Ruedi Gloor

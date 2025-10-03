@@ -1,0 +1,20 @@
+# Steps to create virtual environment
+#-----------------------------------------------------------------------
+#Below for Windows From PowerShell fot Python 2.
+#-----------------------------------------------------------------------
+1. Make sure Python2 is installed and path is correctly set.
+2. Install virtualenv using pip in powershell:
+  pip2 install virtualenv
+3. Use following command to create a python virtual environment:
+  py -2 -m virtualenv <path to the environment>
+4. Activate the virtual environment by using following command.
+  .\<path to virtual the environment>\Scripts\activate.ps1
+#-----------------------------------------------------------------------
+#Below for Windows From PowerShell fot Python 3.
+#-----------------------------------------------------------------------
+1. Make sure Python3 is installed and path is correctly set. Python3 comes
+   with the built-in virtual environment package.
+2. Install virtual environment using the following command in powershell:
+    py -3 -m venv <path to the environment>
+3. Activate the virtual environment by using following command.
+    .\<path to virtual the environment>\Scripts\activate.ps1

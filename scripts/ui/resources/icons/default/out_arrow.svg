@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg viewBox="0 0 500 500" version="1.1" id="svg921" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+  <defs id="defs918">
+    <marker style="overflow:visible" id="Tail" refX="0" refY="0" orient="auto">
+      <g transform="scale(-1.2)" id="g1584">
+        <path style="fill:none;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.8;stroke-linecap:round" d="M -3.8048674,-3.9585227 0.54352094,0" id="path1572" />
+        <path style="fill:none;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.8;stroke-linecap:round" d="M -1.2866832,-3.9585227 3.0617053,0" id="path1574" />
+        <path style="fill:none;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.8;stroke-linecap:round" d="M 1.3053582,-3.9585227 5.6537466,0" id="path1576" />
+        <path style="fill:none;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.8;stroke-linecap:round" d="M -3.8048674,4.1775838 0.54352094,0.21974226" id="path1578" />
+        <path style="fill:none;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.8;stroke-linecap:round" d="M -1.2866832,4.1775838 3.0617053,0.21974226" id="path1580" />
+        <path style="fill:none;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.8;stroke-linecap:round" d="M 1.3053582,4.1775838 5.6537466,0.21974226" id="path1582" />
+      </g>
+    </marker>
+    <marker style="overflow:visible" id="Arrow2Lend" refX="0" refY="0" orient="auto">
+      <path transform="matrix(-1.1,0,0,-1.1,-1.1,0)" d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z" style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.625;stroke-linejoin:round" id="path1557" />
+    </marker>
+    <marker style="overflow:visible" id="EmptyDiamondL" refX="0" refY="0" orient="auto">
+      <path transform="scale(0.8)" style="fill:context-fill;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt" d="M 0,-7.0710768 -7.0710894,0 0,7.0710589 7.0710462,0 Z" id="path1642" />
+    </marker>
+  </defs>
+  <g id="g2782" transform="translate(1.7601968e-4,7.2129209e-5)">
+    <rect style="fill:none;fill-opacity:0.370629;stroke:#848688;stroke-width:0.0264583;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0" id="rect7502" width="500" height="500" x="-0.00017601968" y="-7.2129209e-05" />
+    <rect style="fill:none;fill-opacity:0.370629;stroke:#848688;stroke-width:0.0264583;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0" id="rect7502-4" width="500" height="500" x="-0.00017601968" y="-7.2129209e-05" />
+    <g id="g2775">
+      <path id="path5634" style="fill:#333;fill-opacity:0.370629;stroke-width:0" d="m 460.93693,444.33518 a 210.93749,39.062497 0 0 1 -210.9366,39.0626 210.93749,39.062497 0 0 1 -210.936602,-39.0626 210.93749,39.062497 0 0 1 210.936602,-39.06259 210.93749,39.062497 0 0 1 210.9366,39.06259 z" />
+      <path id="path7642" style="fill:#8e9092;fill-opacity:1;stroke:#848688;stroke-width:0.132292;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" d="M 290.46726,62.500165 V 171.0978 H 46.875539 V 328.90134 H 290.46726 v 108.59881 l 81.35314,-93.77717 81.30472,-93.72283 -81.30472,-93.72282 z" />
+    </g>
+  </g>
+</svg>

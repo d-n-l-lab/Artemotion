@@ -1,0 +1,57 @@
+{
+  "File": [
+    {"New Project": "CTRL+N"},
+    {"Open Project": "CTRL+O"},
+    {"&Close Project": ""},
+    "Separator",
+    {"Save Project": "CTRL+S"},
+    {"Save Project As": "CTRL+SHIFT+S"},
+    "Separator",
+    {"Recent Projects": ""},
+    {"Exit": "ALT+F4"}
+  ],
+  "Edit": [
+    {"&Undo": "CTRL+Z"},
+    {"&Redo": "CTRL+Y"},
+    "Separator",
+    {"&Cut": "CTRL+X"},
+    {"&Copy": "CTRL+C"},
+    {"&Paste": "CTRL+V"},
+    {"&Delete": "Del"},
+    "Separator",
+    {"&Select All": "CTRL+A"},
+    "Separator",
+    {"&Find and Replace": [
+      {"&Find": "CTRL+F"},
+      {"&Replace": "CTRL+R"},
+      "Separator",
+      {"&Find in Project": "CTRL+SHIFT+F"},
+      {"&Replace in Project": "CTRL+SHIFT+R"},
+      "Separator",
+      {"&Find Next": "F3"},
+      {"&Find Previous": "SHIFT+F3"}
+    ]}
+  ],
+  "Scene": [
+    {"&Add Robot": [
+      {"&KUKA": [
+        {"&KR16-R2010-2": ""}
+      ]},
+      {"&Staubli": [
+        {"&Staubli-RX160": ""}
+      ]}
+    ]}
+  ],
+  "Window": [
+    {
+      "&Animation": [
+        {"&Visualize": ""},
+        {"&Data": ""}
+      ]
+    }
+  ],
+  "Help": [
+    {"&Help": "F1"},
+    {"&About": ""}
+  ]
+}

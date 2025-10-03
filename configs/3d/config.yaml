@@ -1,0 +1,28 @@
+Meshes:
+  dir_path: scripts/ui/resources/meshes/
+  files_ext:
+    - .stl
+    - .obj
+Robots:
+  dir_path: scripts/ui/resources/meshes/
+  types:
+    KUKA:
+      - AGILUS-KR6-R900
+      - AGILUS-KR10-R900
+      - AGILUS-KR10-R1100
+      - AGILUS-KR10-R1100-2
+      - CYBERTECH-KR16-R1610
+      - CYBERTECH-KR16-R1610-2
+      - CYBERTECH-KR16-R2010
+      - CYBERTECH-KR20-R1810
+      - CYBERTECH-NANO-KR8-R1620
+      - CYBERTECH-NANO-KR10-R1420
+      - IONTEC-KR30-R2100
+      - IONTEC-KR20-R3100
+    Staubli:
+      - RX160
+      - RX160L
+      - TX90
+    ABB:
+    UR:
+    Fanuc:

@@ -1,0 +1,53 @@
+/* Frames */
+QFrame {
+  background-color: #323232;
+}
+
+/* Labels */
+QLabel {
+  color: #8e9092;
+  border-radius: 7px;
+  font: bold 7pt "MS Shell Dlg 2";
+}
+
+/* PushButtons */
+QPushButton {
+  color: #b4b4b4;
+  border-style: solid;
+  background-color: #464646;
+  font: 8pt "MS Shell Dlg 2";
+}
+QPushButton:disabled {
+  background-color: #3c3c3c;
+}
+QPushButton:hover {
+	background-color: #505050;
+}
+QPushButton[type="left_button"] {
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+}
+QPushButton[type="right_button"] {
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+/* Sliders */
+QSlider::groove:horizontal {
+    border-style: solid;
+    height: 20px; /* the groove expands to the size of the slider by default. by giving it a height, it has a fixed size */
+    background: #3c3c3c; /* qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #3c3c3c, stop:1 #3c3c3c); */
+    margin: -3px 0;
+    border-radius: 5px;
+}
+
+QSlider::handle:horizontal {
+    background: #464646; /* qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f); */
+    border-style: solid;
+    width: 8px;
+    margin: 0px 0; /* handle is placed by default on the contents rect of the groove. Expand outside the groove */
+    border-radius: 3px;
+}
+QSlider::handle:hover {
+    background: #505050; /* qlineargradient(x1:0, y1:0, x2:1, y2:1, stop:0 #b4b4b4, stop:1 #8f8f8f); */
+}

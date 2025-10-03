@@ -1,0 +1,16 @@
+/* Frames */
+QFrame {
+  border-style: solid;
+  border-color: #3c3c3c;
+}
+QFrame#main3DAreaFrame {
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+}
+QFrame#rightContentsAreaFrame {
+  border-left-width: 1px;
+}
+QFrame#bottomContentsAreaFrame {
+  border-top-width: 1px;
+  border-right-width: 1px;
+}

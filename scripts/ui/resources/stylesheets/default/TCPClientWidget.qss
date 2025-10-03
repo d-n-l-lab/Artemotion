@@ -1,0 +1,149 @@
+/* Frames */
+QFrame#tcpClientWidget {
+  border-style: solid;
+  border-top-width: 1px;
+  border-color: #3c3c3c;
+  background-color: #323232;
+}
+
+/* GroupBox */
+QGroupBox {
+  border: none;
+  color: #8e9092;
+  background-color: transparent;
+  font: bold 8pt "MS Shell Dlg 2";
+}
+QGroupBox::title {
+	subcontrol-origin: margin;
+}
+QGroupBox::indicator {
+  border-radius: 3px;
+	background-color: #464646;
+}
+QGroupBox::indicator:checked {
+	background-color: #3dcb9d;
+}
+QGroupBox::indicator:unchecked:hover {
+  border: 1px;
+  border-style: solid;
+  border-color: #5a5a5a;
+}
+
+/* Labels */
+QLabel {
+  color: #8e9092;
+  border-radius: 7px;
+}
+QLabel#tcpConfigTitleLabel {
+  background-color: #3c3c3c;
+  font: bold 9pt "MS Shell Dlg 2";
+}
+QLabel#connectStatusLED {
+  border-radius: 5px;
+  background-color: #464646;
+}
+QLabel#connectStatusLED:enabled {
+  background-color: #00e552;
+}
+QLabel[type="header_label"] {
+  font: bold 8pt "MS Shell Dlg 2";
+}
+QLabel[type="sub_label"] {
+  font: 8pt "MS Shell Dlg 2";
+}
+QLabel[type="data_label"] {
+  background-color: #3c3c3c;
+  font: bold 7pt "MS Shell Dlg 2";
+}
+
+/* LineEdits */
+QLineEdit {
+  color: #b4b4b4;
+  background-color: #464646;
+  font: 8pt "MS Shell Dlg 2";
+}
+QLineEdit:hover {
+	background-color: #505050;
+}
+QLineEdit#tcpClientAddrLineEdit {
+  border-top-left-radius: 7px;
+	border-bottom-left-radius: 7px;
+}
+QLineEdit[type="data"] {
+	border-radius: 7px;
+}
+
+/* PushButtons */
+QPushButton {
+  outline: none;
+  color: #b4b4b4;
+  border-style: solid;
+  background-color: #464646;
+  font: 8pt "MS Shell Dlg 2";
+}
+QPushButton:disabled {
+  background-color: #3c3c3c;
+}
+QPushButton:hover {
+	background-color: #505050;
+}
+QPushButton#dummy1PushButton {
+  background-color: transparent;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+}
+QPushButton#dummy2PushButton {
+  background-color: transparent;
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+QPushButton#pingPushButton {
+  border-top-right-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+QPushButton#connectPushButton {
+  border-radius: 7px;
+}
+
+/* TreeView */
+QTreeView {
+  border: none;
+  outline: none;
+  color: #b4b4b4;
+  background: #464646;
+  font: 8pt "MS Shell Dlg 2";
+  show-decoration-selected: 1;
+  alternate-background-color: #414141;
+}
+QTreeView QHeaderView::section {
+  color: #b4b4b4;
+  padding-left: 5px;
+  border-bottom: 2px;
+  border-style: solid;
+  border-color: #505050;
+  background-color: #464646;
+  font: 8pt "MS Shell Dlg 2";
+}
+QTreeView QHeaderView::section:first {
+  border-right: 1px;
+  border-style: solid;
+  border-color: #505050;
+}
+QTreeView QHeaderView::section:last {
+  border-left: 1px;
+  border-style: solid;
+  border-color: #505050;
+}
+QTreeView::item {
+  border: none;
+  outline: none;
+  color: #b4b4b4;
+  font: 8pt "MS Shell Dlg 2";
+}
+QTreeView::item:hover {
+  background: #505050;
+}
+QTreeView::item:selected {
+  color: #e6e6e6;
+  background: #5a5a5a;
+}

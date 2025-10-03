@@ -1,0 +1,425 @@
+Brand: KUKA
+Name: KR16-R2010-2
+Family: CYBERTECH-2
+Communication: RSI
+DataRate: 12.0 # in msec
+RatedPayload: 16.0 # in Kg
+MaxPayload: 19.2 # in Kg
+MaxReach: 2013 # in mm
+PoseRepeatability: 0.04 # in mm
+Solver: Spherical
+Links:
+  base:
+    name: "base"
+    color:
+      - 1.0 # r
+      - 0.607843137255 # g
+      - 0.0 # b
+      - 1.0 # a
+    origin:
+      x: 0.0 # in metres
+      y: 0.0 # in metres
+      z: 0.0 # in metres
+      a: 0.0
+      b: 0.0
+      c: 0.0
+    size:
+      x: 0.423 # in metres
+      y: 0.376 # in metres
+      z: 0.284 # in metres
+    inertia:
+      mass: 0.0 # in Kg
+      ixx: 0.0
+      ixy: 0.0
+      ixz: 0.0
+      iyy: 0.0
+      iyz: 0.0
+      izz: 0.0
+      origin:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+        a: 0.0
+        b: 0.0
+        c: 0.0
+    mesh: "base.stl"
+  link1:
+    name: "link1"
+    color:
+      - 1.0 # r
+      - 0.607843137255 # g
+      - 0.0 # b
+      - 1.0 # a
+    origin:
+      x: 0.0 # in metres
+      y: 0.0 # in metres
+      z: 0.0 # in metres
+      a: 0.0
+      b: 0.0
+      c: 0.0
+    size:
+      x: 0.486 # in metres
+      y: 0.382 # in metres
+      z: 0.402 # in metres
+    inertia:
+      mass: 0.0 # in Kg
+      ixx: 0.0
+      ixy: 0.0
+      ixz: 0.0
+      iyy: 0.0
+      iyz: 0.0
+      izz: 0.0
+      origin:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+        a: 0.0
+        b: 0.0
+        c: 0.0
+    mesh: "link1.stl"
+  link2:
+    name: "link2"
+    color:
+      - 1.0 # r
+      - 0.607843137255 # g
+      - 0.0 # b
+      - 1.0 # a
+    origin:
+      x: 0.0 # in metres
+      y: 0.0 # in metres
+      z: 0.0 # in metres
+      a: 0.0
+      b: 0.0
+      c: 0.0
+    size:
+      x: 1.210 # in metres
+      y: 0.180 # in metres
+      z: 0.214 # in metres
+    inertia:
+      mass: 0.0 # in Kg
+      ixx: 0.0
+      ixy: 0.0
+      ixz: 0.0
+      iyy: 0.0
+      iyz: 0.0
+      izz: 0.0
+      origin:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+        a: 0.0
+        b: 0.0
+        c: 0.0
+    mesh: "link2.stl"
+  link3:
+    name: "link3"
+    color:
+      - 1.0 # r
+      - 0.607843137255 # g
+      - 0.0 # b
+      - 1.0 # a
+    origin:
+      x: 0.0 # in metres
+      y: 0.0 # in metres
+      z: 0.0 # in metres
+      a: 0.0
+      b: 0.0
+      c: 0.0
+    size:
+      x: 0.411 # in metres
+      y: 0.208 # in metres
+      z: 0.351 # in metres
+    inertia:
+      mass: 0.0 # in Kg
+      ixx: 0.0
+      ixy: 0.0
+      ixz: 0.0
+      iyy: 0.0
+      iyz: 0.0
+      izz: 0.0
+      origin:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+        a: 0.0
+        b: 0.0
+        c: 0.0
+    mesh: "link3.stl"
+  link4:
+    name: "link4"
+    color:
+      - 1.0 # r
+      - 0.607843137255 # g
+      - 0.0 # b
+      - 1.0 # a
+    origin:
+      x: 0.0 # in metres
+      y: 0.0 # in metres
+      z: 0.0 # in metres
+      a: 0.0
+      b: 0.0
+      c: 0.0
+    size:
+      x: 0.619 # in metres
+      y: 0.161 # in metres
+      z: 0.137 # in metres
+    inertia:
+      mass: 0.0 # in Kg
+      ixx: 0.0
+      ixy: 0.0
+      ixz: 0.0
+      iyy: 0.0
+      iyz: 0.0
+      izz: 0.0
+      origin:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+        a: 0.0
+        b: 0.0
+        c: 0.0
+    mesh: "link4.stl"
+  link5:
+    name: "link5"
+    color:
+      - 0.529411764706 # r
+      - 0.521568627451 # g
+      - 0.505882352941 # b
+      - 1.0 # a
+    origin:
+      x: 0.0 # in metres
+      y: 0.0 # in metres
+      z: 0.0 # in metres
+      a: 0.0
+      b: 0.0
+      c: 0.0
+    size:
+      x: 0.202 # in metres
+      y: 0.237 # in metres
+      z: 0.115 # in metres
+    inertia:
+      mass: 0.0 # in Kg
+      ixx: 0.0
+      ixy: 0.0
+      ixz: 0.0
+      iyy: 0.0
+      iyz: 0.0
+      izz: 0.0
+      origin:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+        a: 0.0
+        b: 0.0
+        c: 0.0
+    mesh: "link5.stl"
+  link6:
+    name: "link6"
+    color:
+      - 0.529411764706 # r
+      - 0.521568627451 # g
+      - 0.505882352941 # b
+      - 1.0 # a
+    origin:
+      x: 0.0 # in metres
+      y: 0.0 # in metres
+      z: 0.0 # in metres
+      a: 0.0
+      b: 0.0
+      c: 0.0
+    size:
+      x: 0.0141 # in metres
+      y: 0.0668 # in metres
+      z: 0.0668 # in metres
+    inertia:
+      mass: 0.0 # in Kg
+      ixx: 0.0
+      ixy: 0.0
+      ixz: 0.0
+      iyy: 0.0
+      iyz: 0.0
+      izz: 0.0
+      origin:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+        a: 0.0
+        b: 0.0
+        c: 0.0
+    mesh: "link6.stl"
+Axes:
+  a1:
+    type: "revolute"
+    origin:
+      x: 0.0
+      y: 0.0
+      z: 0.52
+      a: 0.0
+      b: 0.0
+      c: 0.0
+    axis:
+      - 0
+      - 0
+      - -1
+    dh-params: # from 0 to 1
+      a: 0.0 # in mm (consider i=0, dist Z0 to Z1 -> X0)
+      alpha: 0.0 # in deg (consider i=0, angle Z0 & Z1 -> X0)
+      d: 0.52 # in mm (consider i=1, dist X0 to X1 -> Z1)
+      theta: 0.0 # in deg (consider i=1, angle X0 & X1 -> Z1)
+    limits:
+      min: -185.0 # in deg
+      max: 185.0 # in deg
+      speed: 200.0 # in deg/sec
+      force: 0.0 # in Nm
+    home:
+      angle: 0.0 # in deg
+      inverted: true
+  a2:
+    type: "revolute"
+    origin:
+      x: 0.16
+      y: 0.0
+      z: 0.0
+      a: 0.0
+      b: 0.0
+      c: 0.0
+    axis:
+      - 0
+      - 1
+      - 0
+    dh-params: # from 1 to 2
+      a: 0.16 # in meters (consider i=1, dist Z1 to Z2 -> X1)
+      alpha: -90.0 # in deg (consider i=1, angle Z1 & Z2 -> X1)
+      d: 0.0 # in meters (consider i=2, dist X1 to X2 -> Z2)
+      theta: 0.0 # in deg (consider i=2, angle X1 & X2 -> Z2)
+    limits:
+      min: -185.0 # in deg
+      max: 65.0 # in deg
+      speed: 175.0 # in deg/sec
+      force: 0.0 # in Nm
+    home:
+      angle: -90.0 # in deg
+      inverted: false
+  a3:
+    type: "revolute"
+    origin:
+      x: 0.98
+      y: 0.0
+      z: 0.0
+      a: 0.0
+      b: 0.0
+      c: 0.0
+    axis:
+      - 0
+      - 1
+      - 0
+    dh-params: # from 2 to 3
+      a: 0.98 # in mm (consider i=2, dist Z2 to Z3 -> X2)
+      alpha: 0.0 # in deg (consider i=2, angle Z2 & Z3 -> X2)
+      d: 0.0 # in mm (consider i=3, dist X2 to X3 -> Z3)
+      theta: -90.0 # in deg (consider i=3, angle X2 & X3 -> Z3)
+    limits:
+      min: -138.0 # in deg
+      max: 175.0 # in deg
+      speed: 190.0 # in deg/sec
+      force: 0.0 # in Nm
+    home:
+      angle: 90.0 # in deg
+      inverted: false
+  a4:
+    type: "revolute"
+    origin:
+      x: 0.86
+      y: 0.0
+      z: 0.15
+      a: 0.0
+      b: 0.0
+      c: 0.0
+    axis:
+      - -1
+      - 0
+      - 0
+    dh-params: # from 3 to 4
+      a: 0.15 # in meters (consider i=3, dist Z3 to Z4 -> X3)
+      alpha: -90.0 # in deg (consider i=3, angle Z3 & Z4 -> X3)
+      d: 0.86 # in meters (consider i=4, dist X3 to X4 -> Z4)
+      theta: 0.0 # in deg (consider i=4, angle X3 & X4 -> Z4)
+    limits:
+      min: -350.0 # in deg
+      max: 350.0 # in deg
+      speed: 430.0 # in deg/sec
+      force: 0.0 # in Nm
+    home:
+      angle: 0.0 # in deg
+      inverted: true
+  a5:
+    type: "revolute"
+    origin:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+      a: 0.0
+      b: 0.0
+      c: 0.0
+    axis:
+      - 0
+      - 1
+      - 0
+    dh-params: # from 4 to 5
+      a: 0.0 # in meters (consider i=4, dist Z4 to Z5 -> X4)
+      alpha: 90.0 # in deg (consider i=4, angle Z4 & Z5 -> X4)
+      d: 0.0 # in meters (consider i=5, dist X4 to X5 -> Z5)
+      theta: 0.0 # in deg (consider i=5, angle X4 & X5 -> Z5)
+    limits:
+      min: -130.0 # in deg
+      max: 130.0 # in deg
+      speed: 430.0 # in deg/sec
+      force: 0.0 # in Nm
+    home:
+      angle: 0.0 # in deg
+      inverted: false
+  a6:
+    type: "revolute"
+    origin:
+      x: 0.153
+      y: 0.0
+      z: 0.0
+      a: 0.0
+      b: 0.0
+      c: 0.0
+    axis:
+      - -1
+      - 0
+      - 0
+    dh-params: # from 5 to 6
+      a: 0.0 # in meters (consider i=5, dist Z5 to Z6 -> X5)
+      alpha: -90.0 # in deg (consider i=5, angle Z5 & Z6 -> X5)
+      d: 0.153 # in meters (consider i=6, dist X5 to X6 -> Z6)
+      theta: 180.0 # in deg (consider i=6, angle X5 & X6 -> Z6)
+    limits:
+      min: -350.0 # in deg
+      max: 350.0 # in deg
+      speed: 630.0 # in deg/sec
+      force: 0.0 # in Nm
+    home:
+      angle: 0.0 # in deg
+      inverted: true
+Flange:
+  type: "fixed"
+  origin:
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    a: 0.0
+    b: 90.0
+    c: 0.0
+OPW: # Ortho-parallel wrist parameters
+  l1: 0.520 # arm-1 length
+  l2: 0.980 # arm-2 length
+  l3: 0.860 # arm-3 length
+  l4: 0.153 # arm-4 length
+  o1: 0.160 # arm offset 1
+  o2: -0.15 # arm offset 2
+  oy: 0.000 # lateral offset of 3rd arm in y direction
+  signs: [-1, 1, 1, -1, 1, -1]
+  ofsts: [0.0, -90.0, 0.0, 0.0, 0.0, 0.0]
