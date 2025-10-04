@@ -20,7 +20,9 @@ from PySide6.QtWidgets import QApplication, QWidget, QFrame, QHBoxLayout, QVBoxL
 try:
   from scripts.settings.Logger import Logger
   from scripts.ui.widgets_sub.SubWidgets import LabelWidget
-  from scripts.ui.widgets_sub.Main3DSubWidgets import Main3DGLWidget
+  from scripts.ui.widgets_3d.PyVistaWidget import PyVistaWidget
+  # Keep old import for compatibility (can be removed later)
+  # from scripts.ui.widgets_sub.Main3DSubWidgets import Main3DGLWidget
 except:
   # For development purpose only
   sys.path.append(
@@ -28,7 +30,9 @@ except:
   )
   from scripts.settings.Logger import Logger
   from scripts.ui.widgets_sub.SubWidgets import LabelWidget
-  from scripts.ui.widgets_sub.Main3DSubWidgets import Main3DGLWidget
+  from scripts.ui.widgets_3d.PyVistaWidget import PyVistaWidget
+  # Keep old import for compatibility (can be removed later)
+  # from scripts.ui.widgets_sub.Main3DSubWidgets import Main3DGLWidget
 
 
 class DummyLogger(Logger):
@@ -64,8 +68,8 @@ class Main3DWidgetContentsArea(QFrame):
     # Create widgets
     self._create_main_3d_gl_controls_area()
 
-    # Create 3D GL Widget
-    self.main3DGLWidget = Main3DGLWidget(parent=self, settings=self._settings)
+    # Create 3D Widget (PyVista-based)
+    self.main3DGLWidget = PyVistaWidget(parent=self, settings=self._settings)
     self.main3DGLWidget.setObjectName(u"main3DGLWidget")
 
     # Add widgets to the layout & set margins

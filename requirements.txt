@@ -6,3 +6,6 @@ pyqtgraph
 PySide6
 PyYAML
 scipy
+pyvista
+pyvistaqt
+vtk
