@@ -63,10 +63,10 @@ class NavController:
     self._logger = logger
 
     # parameters
-    self._fov = 45.0
+    self._fov = 60.0  # Wider field of view
     self._depth = 0.0
     self._viewport = glm.vec4(0)
-    self.cam_pos = kwargs.get('cam_pos', glm.vec3(5, 4, 5))
+    self.cam_pos = kwargs.get('cam_pos', glm.vec3(8, 6, 8))  # Further back
     self.cam_target = kwargs.get('cam_target', glm.vec3(0, 0, 0))
 
     # Mouse Filtering
@@ -549,9 +549,15 @@ class Main3DGLWidget(NavController, QOpenGLWidget):
     pygl.glClear(pygl.GL_COLOR_BUFFER_BIT | pygl.GL_DEPTH_BUFFER_BIT)
 
     try:
+      rendered_count = 0
       for rend in self._renderables:
         if rend is not None and rend.initialized:
           rend.render()
+          rendered_count += 1
+      # Debug: print render count occasionally
+      if rendered_count > 0 and not hasattr(self, '_render_logged'):
+        Main3DSubUILogger.info(f"Rendering {rendered_count} objects")
+        self._render_logged = True
     except Exception:
       Main3DSubUILogger.exception("Unable to render because:")
 
