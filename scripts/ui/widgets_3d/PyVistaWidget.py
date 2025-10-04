@@ -258,75 +258,96 @@ class PyVistaWidget(QFrame):
     # Remove old robot actors if they exist
     if robot_name in self.robot_actors:
       for actor in self.robot_actors[robot_name]:
-        self.plotter.remove_actor(actor)
+        try:
+          self.plotter.remove_actor(actor)
+        except:
+          pass
 
     # Create robot links
     actors = []
-    links = robot_config.Links
     
-    # Color palette for robot links
-    colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#FFA07A', '#98D8C8', '#F7DC6F', '#BB8FCE']
+    # Import Link class to parse meshes
+    from scripts.engine3d.renderables.Link import Link
     
-    for idx, (link_name, link_config) in enumerate(links.items()):
+    # Color palette for robot links (RGB tuples)
+    colors = [
+      [1.0, 0.42, 0.42],  # Red
+      [0.31, 0.80, 0.77], # Cyan
+      [0.27, 0.72, 0.82], # Blue
+      [1.0, 0.63, 0.48],  # Orange
+      [0.60, 0.85, 0.78], # Teal
+      [0.97, 0.86, 0.44], # Yellow
+      [0.73, 0.56, 0.81]  # Purple
+    ]
+    
+    links_dict = robot_config.Links
+    for idx, (link_name, link_config) in enumerate(links_dict.items()):
       try:
-        # Get transform for this link
-        transform = transforms[idx - 1] if idx > 0 and len(transforms) >= idx else None
+        # Create Link object and parse mesh data
+        link = Link(
+          sh_file='link',
+          robot=robot_config.Name,
+          config=link_config,
+          logger=PyVistaLogger
+        )
         
-        # Create link geometry based on configuration
-        mesh = self._create_link_mesh(link_config, transform)
+        # Parse the mesh data (loads STL or creates procedural geometry)
+        link.parse_mesh_data()
         
-        if mesh is not None:
-          actor = self.plotter.add_mesh(
-            mesh, 
-            color=colors[idx % len(colors)],
-            opacity=0.9,
-            smooth_shading=True,
-            name=f'{robot_name}_{link_name}'
-          )
-          actors.append(actor)
+        # Check if we have valid mesh data
+        if not hasattr(link, 'vertices') or not hasattr(link, 'indices'):
+          PyVistaLogger.warning(f"No mesh data for {link_name}, skipping")
+          continue
+          
+        if len(link.vertices) == 0 or len(link.indices) == 0:
+          PyVistaLogger.warning(f"Empty mesh data for {link_name}, skipping")
+          continue
+        
+        # Convert glm arrays to numpy
+        import numpy as np
+        vertices = np.array(link.vertices).reshape(-1, 3)
+        indices = np.array(link.indices, dtype=np.int32)
+        
+        # Create PyVista mesh from vertices and indices
+        # Indices need to be in format: [n_points, idx1, idx2, ..., n_points, idx1, idx2, ...]
+        faces = []
+        for i in range(0, len(indices), 3):
+          if i + 2 < len(indices):
+            faces.extend([3, indices[i], indices[i+1], indices[i+2]])
+        
+        if len(faces) == 0:
+          PyVistaLogger.warning(f"No faces created for {link_name}")
+          continue
+          
+        faces = np.array(faces, dtype=np.int32)
+        mesh = pv.PolyData(vertices, faces)
+        
+        # Apply transform if available
+        if idx > 0 and len(transforms) >= idx:
+          transform = transforms[idx - 1]
+          # Convert glm matrix to numpy 4x4
+          mat = np.array(transform).reshape(4, 4).T  # Transpose for VTK convention
+          mesh.transform(mat)
+        
+        # Add mesh to scene with color
+        color = colors[idx % len(colors)]
+        actor = self.plotter.add_mesh(
+          mesh, 
+          color=color,
+          opacity=0.9,
+          smooth_shading=True,
+          name=f'{robot_name}_{link_name}'
+        )
+        actors.append(actor)
+        
+        PyVistaLogger.info(f"Rendered link {link_name} with {len(vertices)} vertices")
+        
       except Exception as e:
         PyVistaLogger.exception(f"Unable to create link {link_name}: {e}")
 
     self.robot_actors[robot_name] = actors
     PyVistaLogger.info(f"Robot {robot_name} rendered with {len(actors)} links")
 
-  def _create_link_mesh(self, link_config, transform=None):
-    """Create a mesh for a robot link."""
-    try:
-      # Check if link has STL file
-      if hasattr(link_config, 'STL') and link_config.STL:
-        # Load STL file
-        from scripts.settings import PathManager
-        stl_path = PathManager.get_stl_path(logger=PyVistaLogger, stl_file=link_config.STL)
-        if os.path.exists(stl_path):
-          mesh = pv.read(stl_path)
-        else:
-          # Fallback to primitive
-          mesh = self._create_primitive_link(link_config)
-      else:
-        # Create primitive geometry
-        mesh = self._create_primitive_link(link_config)
-      
-      # Apply transform if provided
-      if transform is not None and mesh is not None:
-        # Convert glm matrix to numpy 4x4
-        import numpy as np
-        mat = np.array(transform).reshape(4, 4)
-        mesh.transform(mat.T)  # Transpose for VTK convention
-
-      return mesh
-    except Exception as e:
-      PyVistaLogger.exception(f"Error creating link mesh: {e}")
-      return None
-
-  def _create_primitive_link(self, link_config):
-    """Create a primitive geometric shape for a robot link."""
-    # Default to cylinder for robot links
-    height = getattr(link_config, 'height', 1.0)
-    radius = getattr(link_config, 'radius', 0.1)
-    
-    mesh = pv.Cylinder(radius=radius, height=height, resolution=32)
-    return mesh
 
   def create_curves(self, poses: np.ndarray) -> None:
     """
