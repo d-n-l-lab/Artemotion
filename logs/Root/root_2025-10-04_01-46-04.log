@@ -1,0 +1,42 @@
+[2025-10-04 01:46:04.559] {                 Kinematics.py:1155} (                     Root: WARNING) - No ortho-parallet wrist parameters defined, unable to solve:
+[2025-10-04 01:46:04.559] {         SimRobotCtrlWidget.py: 129} (                     Root:   ERROR) - Unable to compute IK solution because:
+Traceback (most recent call last):
+  File "/Users/dominiklang/Artemotion/scripts/artebotics/Optimization.py", line 201, in compute_ik
+    angles_out_of_limits = self._check_ik_solution_within_limits(angles=self.ik.solutions[0])
+                                                                        ~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+[2025-10-04 01:46:34.957] {                 Kinematics.py:1155} (                     Root: WARNING) - No ortho-parallet wrist parameters defined, unable to solve:
+[2025-10-04 01:46:34.958] {         SimRobotCtrlWidget.py: 129} (                     Root:   ERROR) - Unable to compute IK solution because:
+Traceback (most recent call last):
+  File "/Users/dominiklang/Artemotion/scripts/artebotics/Optimization.py", line 201, in compute_ik
+    angles_out_of_limits = self._check_ik_solution_within_limits(angles=self.ik.solutions[0])
+                                                                        ~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+[2025-10-04 01:46:37.528] {                 Kinematics.py:1155} (                     Root: WARNING) - No ortho-parallet wrist parameters defined, unable to solve:
+[2025-10-04 01:46:37.528] {         SimRobotCtrlWidget.py: 129} (                     Root:   ERROR) - Unable to compute IK solution because:
+Traceback (most recent call last):
+  File "/Users/dominiklang/Artemotion/scripts/artebotics/Optimization.py", line 201, in compute_ik
+    angles_out_of_limits = self._check_ik_solution_within_limits(angles=self.ik.solutions[0])
+                                                                        ~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+[2025-10-04 01:46:37.886] {                 Kinematics.py:1155} (                     Root: WARNING) - No ortho-parallet wrist parameters defined, unable to solve:
+[2025-10-04 01:46:37.887] {         SimRobotCtrlWidget.py: 129} (                     Root:   ERROR) - Unable to compute IK solution because:
+Traceback (most recent call last):
+  File "/Users/dominiklang/Artemotion/scripts/artebotics/Optimization.py", line 201, in compute_ik
+    angles_out_of_limits = self._check_ik_solution_within_limits(angles=self.ik.solutions[0])
+                                                                        ~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+[2025-10-04 01:46:38.092] {                 Kinematics.py:1155} (                     Root: WARNING) - No ortho-parallet wrist parameters defined, unable to solve:
+[2025-10-04 01:46:38.092] {         SimRobotCtrlWidget.py: 129} (                     Root:   ERROR) - Unable to compute IK solution because:
+Traceback (most recent call last):
+  File "/Users/dominiklang/Artemotion/scripts/artebotics/Optimization.py", line 201, in compute_ik
+    angles_out_of_limits = self._check_ik_solution_within_limits(angles=self.ik.solutions[0])
+                                                                        ~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range
+[2025-10-04 01:46:38.300] {                 Kinematics.py:1155} (                     Root: WARNING) - No ortho-parallet wrist parameters defined, unable to solve:
+[2025-10-04 01:46:38.300] {         SimRobotCtrlWidget.py: 129} (                     Root:   ERROR) - Unable to compute IK solution because:
+Traceback (most recent call last):
+  File "/Users/dominiklang/Artemotion/scripts/artebotics/Optimization.py", line 201, in compute_ik
+    angles_out_of_limits = self._check_ik_solution_within_limits(angles=self.ik.solutions[0])
+                                                                        ~~~~~~~~~~~~~~~~~^^^
+IndexError: list index out of range

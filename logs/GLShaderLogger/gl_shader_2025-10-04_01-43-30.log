@@ -1,0 +1,12 @@
+[2025-10-04 01:43:30.108] {                   GLShader.py:  95} (           GLShaderLogger:   ERROR) - ERROR: 0:11: '' :  version '400' is not supported
+ERROR: 0:11: '' : syntax error: #version
+
+[2025-10-04 01:43:30.109] {                   GLShader.py:  95} (           GLShaderLogger:   ERROR) - ERROR: 0:11: '' :  version '400' is not supported
+ERROR: 0:11: '' : syntax error: #version
+
+[2025-10-04 01:46:04.563] {                   GLShader.py:  95} (           GLShaderLogger:   ERROR) - ERROR: 0:11: '' :  version '400' is not supported
+ERROR: 0:11: '' : syntax error: #version
+
+[2025-10-04 01:46:04.563] {                   GLShader.py:  95} (           GLShaderLogger:   ERROR) - ERROR: 0:11: '' :  version '400' is not supported
+ERROR: 0:11: '' : syntax error: #version
+

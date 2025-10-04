@@ -1,0 +1,8 @@
+asyncua
+numpy
+PyGLM
+PyOpenGL
+pyqtgraph
+PySide6
+PyYAML
+scipy

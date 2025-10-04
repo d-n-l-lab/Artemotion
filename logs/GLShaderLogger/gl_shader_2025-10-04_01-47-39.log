@@ -1,0 +1,6 @@
+[2025-10-04 01:47:39.486] {                   GLShader.py:  95} (           GLShaderLogger:   ERROR) - ERROR: 0:11: '' :  version '330' is not supported
+ERROR: 0:11: '' : syntax error: #version
+
+[2025-10-04 01:47:39.487] {                   GLShader.py:  95} (           GLShaderLogger:   ERROR) - ERROR: 0:11: '' :  version '330' is not supported
+ERROR: 0:11: '' : syntax error: #version
+

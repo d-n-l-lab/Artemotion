@@ -1,0 +1,75 @@
+[2025-10-04 01:46:04.560] {            AnimPathsWidget.py: 306} (           UISimRobotCtrl:   ERROR) - Unable to compute IK solutions of curves/path data because:
+Traceback (most recent call last):
+  File "/Users/dominiklang/Artemotion/scripts/ui/widgets_rob/SimRobotCtrlWidget.py", line 721, in on_curves_data_ik_computation_req_recvd
+    results = [self.compute_robot_ik(robot_name=robot_name,
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dominiklang/Artemotion/scripts/ui/widgets_rob/SimRobotCtrlWidget.py", line 721, in <listcomp>
+    results = [self.compute_robot_ik(robot_name=robot_name,
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dominiklang/Artemotion/scripts/ui/widgets_rob/SimRobotCtrlWidget.py", line 129, in compute_robot_ik
+    res = self.robots[robot_name]['solver'].compute_ik(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dominiklang/Artemotion/scripts/artebotics/Optimization.py", line 211, in compute_ik
+    return self._last_valid_tg_pose, angles, angles_out_of_limits
+                                             ^^^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'angles_out_of_limits' where it is not associated with a value
+[2025-10-04 01:46:34.958] {         SimRobotCtrlWidget.py:1359} (           UISimRobotCtrl:   ERROR) - Unable to compute Staubli-RX160 IK because:
+Traceback (most recent call last):
+  File "/Users/dominiklang/Artemotion/scripts/ui/widgets_rob/SimRobotCtrlWidget.py", line 575, in on_updated_cart_value_recvd_frm_ui
+    res = self.compute_robot_ik(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dominiklang/Artemotion/scripts/ui/widgets_rob/SimRobotCtrlWidget.py", line 129, in compute_robot_ik
+    res = self.robots[robot_name]['solver'].compute_ik(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dominiklang/Artemotion/scripts/artebotics/Optimization.py", line 211, in compute_ik
+    return self._last_valid_tg_pose, angles, angles_out_of_limits
+                                             ^^^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'angles_out_of_limits' where it is not associated with a value
+[2025-10-04 01:46:37.528] {         SimRobotCtrlWidget.py:1359} (           UISimRobotCtrl:   ERROR) - Unable to compute Staubli-RX160 IK because:
+Traceback (most recent call last):
+  File "/Users/dominiklang/Artemotion/scripts/ui/widgets_rob/SimRobotCtrlWidget.py", line 575, in on_updated_cart_value_recvd_frm_ui
+    res = self.compute_robot_ik(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dominiklang/Artemotion/scripts/ui/widgets_rob/SimRobotCtrlWidget.py", line 129, in compute_robot_ik
+    res = self.robots[robot_name]['solver'].compute_ik(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dominiklang/Artemotion/scripts/artebotics/Optimization.py", line 211, in compute_ik
+    return self._last_valid_tg_pose, angles, angles_out_of_limits
+                                             ^^^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'angles_out_of_limits' where it is not associated with a value
+[2025-10-04 01:46:37.887] {         SimRobotCtrlWidget.py:1359} (           UISimRobotCtrl:   ERROR) - Unable to compute Staubli-RX160 IK because:
+Traceback (most recent call last):
+  File "/Users/dominiklang/Artemotion/scripts/ui/widgets_rob/SimRobotCtrlWidget.py", line 575, in on_updated_cart_value_recvd_frm_ui
+    res = self.compute_robot_ik(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dominiklang/Artemotion/scripts/ui/widgets_rob/SimRobotCtrlWidget.py", line 129, in compute_robot_ik
+    res = self.robots[robot_name]['solver'].compute_ik(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dominiklang/Artemotion/scripts/artebotics/Optimization.py", line 211, in compute_ik
+    return self._last_valid_tg_pose, angles, angles_out_of_limits
+                                             ^^^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'angles_out_of_limits' where it is not associated with a value
+[2025-10-04 01:46:38.093] {         SimRobotCtrlWidget.py:1359} (           UISimRobotCtrl:   ERROR) - Unable to compute Staubli-RX160 IK because:
+Traceback (most recent call last):
+  File "/Users/dominiklang/Artemotion/scripts/ui/widgets_rob/SimRobotCtrlWidget.py", line 575, in on_updated_cart_value_recvd_frm_ui
+    res = self.compute_robot_ik(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dominiklang/Artemotion/scripts/ui/widgets_rob/SimRobotCtrlWidget.py", line 129, in compute_robot_ik
+    res = self.robots[robot_name]['solver'].compute_ik(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dominiklang/Artemotion/scripts/artebotics/Optimization.py", line 211, in compute_ik
+    return self._last_valid_tg_pose, angles, angles_out_of_limits
+                                             ^^^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'angles_out_of_limits' where it is not associated with a value
+[2025-10-04 01:46:38.300] {         SimRobotCtrlWidget.py:1359} (           UISimRobotCtrl:   ERROR) - Unable to compute Staubli-RX160 IK because:
+Traceback (most recent call last):
+  File "/Users/dominiklang/Artemotion/scripts/ui/widgets_rob/SimRobotCtrlWidget.py", line 575, in on_updated_cart_value_recvd_frm_ui
+    res = self.compute_robot_ik(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dominiklang/Artemotion/scripts/ui/widgets_rob/SimRobotCtrlWidget.py", line 129, in compute_robot_ik
+    res = self.robots[robot_name]['solver'].compute_ik(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/dominiklang/Artemotion/scripts/artebotics/Optimization.py", line 211, in compute_ik
+    return self._last_valid_tg_pose, angles, angles_out_of_limits
+                                             ^^^^^^^^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'angles_out_of_limits' where it is not associated with a value
