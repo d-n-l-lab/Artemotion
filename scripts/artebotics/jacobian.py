@@ -15,7 +15,7 @@ import sys
 import glm
 import numpy as np
 
-from typing import Any, List
+from typing import Any, List, Union
 
 try:
   from scripts.settings.Logger import Logger
@@ -30,7 +30,7 @@ class DummyLogger(Logger):
   pass
 
 
-def compute_jacobian_tcp(logger: Logger, robot: Any, thetas: List[float] | np.ndarray, tool: Any) -> np.ndarray:
+def compute_jacobian_tcp(logger: Logger, robot: Any, thetas: Union[List[float], np.ndarray], tool: Any) -> np.ndarray:
   """
   Function to compute Jacobian of the Robot's TCP or Flange coordinate system.
 
@@ -39,7 +39,7 @@ def compute_jacobian_tcp(logger: Logger, robot: Any, thetas: List[float] | np.nd
       logger class
     robot: Any
       robot class
-    thetas: List[float] | np.ndarray
+    thetas: Union[List[float], np.ndarray]
       current joint angles of the robot
     tool: Any
       tool class
@@ -65,7 +65,7 @@ def compute_jacobian_tcp(logger: Logger, robot: Any, thetas: List[float] | np.nd
   finally:
     return jac_tcp
 
-def compute_jacobian_world(logger: Logger, robot: Any, thetas: List[float] | np.ndarray, tool: Any) -> np.ndarray:
+def compute_jacobian_world(logger: Logger, robot: Any, thetas: Union[List[float], np.ndarray], tool: Any) -> np.ndarray:
   """
   Function to compute Jacobian of the Robot's in world coordinate system.
 
@@ -74,7 +74,7 @@ def compute_jacobian_world(logger: Logger, robot: Any, thetas: List[float] | np.
       logger class
     robot: Any
       robot class
-    thetas: List[float] | np.ndarray
+    thetas: Union[List[float], np.ndarray]
       current joint angles of the robot
     tool: Any
       tool class

@@ -14,9 +14,10 @@ import os
 import sys
 import posixpath
 
-from PySide6.QtGui import QKeyEvent, QMouseEvent, QCloseEvent, QResizeEvent, QScreen
+from PySide6.QtGui import QKeyEvent, QMouseEvent, QCloseEvent, QResizeEvent, QScreen, QSurfaceFormat
 from PySide6.QtCore import QSettings, QSize, Signal, Qt
 from PySide6.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout
+from PySide6.QtOpenGL import QOpenGLVersionProfile
 
 try:
   from config import AppConfig
@@ -402,6 +403,16 @@ def main():
   """
   Main function to launch the application MainWindow.
   """
+
+  # Set OpenGL format for macOS compatibility
+  fmt = QSurfaceFormat()
+  fmt.setVersion(3, 3)  # OpenGL 3.3
+  fmt.setProfile(QSurfaceFormat.OpenGLContextProfile.CoreProfile)
+  fmt.setDepthBufferSize(24)
+  fmt.setStencilBufferSize(8)
+  fmt.setSwapBehavior(QSurfaceFormat.SwapBehavior.DoubleBuffer)
+  fmt.setSwapInterval(1)  # Enable vsync
+  QSurfaceFormat.setDefaultFormat(fmt)
 
   # Create an instance of QApplication
   app = QApplication(sys.argv)

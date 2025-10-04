@@ -291,8 +291,10 @@ class AnimDataFromDBWorker(QObject):
 
     self.path_id = 0
     self.kinematic_id = 0
+    # Get computer name - works on both Windows and macOS/Linux
+    comp_name = os.environ.get('COMPUTERNAME') or os.environ.get('HOSTNAME') or 'localhost'
     self.db_client = DatabaseNodeStream(
-                       server_name = f"{os.environ['COMPUTERNAME']}\\{self._fetch_server_instance()}",
+                       server_name = f"{comp_name}\\{self._fetch_server_instance()}",
                        database_name = "Artemotion",
                        username = "",
                        password = "",

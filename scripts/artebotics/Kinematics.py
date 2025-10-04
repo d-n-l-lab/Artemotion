@@ -17,7 +17,7 @@ import glm
 import numpy as np
 import scipy.optimize
 
-from typing import Dict, List, Tuple
+from typing import Dict, List, Tuple, Optional, Union
 
 try:
   from scripts.settings.Logger import Logger
@@ -50,7 +50,7 @@ class Kinematics:
       robot name/model
     axes_angles: List
       list containing angles of all the robot's axes
-    tg_pose: List | glm.array
+    tg_pose: Union[List, glm.array]
       list or array containing the target pose of the robot
   """
 
@@ -351,12 +351,12 @@ class Kinematics:
     return self._pose
 
   @pose.setter
-  def pose(self, pose: glm.array | List) -> None:
+  def pose(self, pose: Union[glm.array, List]) -> None:
     """
     Robot current pose property setter.
 
     Arguments:
-      pose: glm.array | List
+      pose: Union[glm.array, List]
         array or list containing current pose (XYZABC) of the robot
     """
 
@@ -382,12 +382,12 @@ class Kinematics:
     return self._tg_pose
 
   @target_pose.setter
-  def target_pose(self, pose: glm.array | List) -> None:
+  def target_pose(self, pose: Union[glm.array, List]) -> None:
     """
     Robot target pose property setter.
 
     Arguments:
-      pose: glm.array | List
+      pose: Union[glm.array, List]
         array or list containing target pose (XYZABC) of the robot
     """
 
@@ -473,7 +473,7 @@ class Kinematics:
       return robot_flange
 
   @property
-  def opw_params(self) -> Dict | None:
+  def opw_params(self) -> Optional[Dict]:
     """
     Ortho-parallel wrist parameters property.
 

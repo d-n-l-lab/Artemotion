@@ -339,7 +339,7 @@ class KeyFramesTableView(TableViewWidget):
       # self._logger.info(f"Updated data: {_data}")
       self.key_frames_data.emit(_data)
 
-  def add_item(self, data: Any | Dict=None) -> None:
+  def add_item(self, data: Union[Any, Dict]=None) -> None:
     """
     Method to add items into the table.
 

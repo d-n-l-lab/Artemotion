@@ -16,10 +16,10 @@ import sys
 import yaml
 
 from dataclasses import dataclass, field
-from typing import Any, AnyStr, Dict
+from typing import Any, AnyStr, Dict, Optional, Union
 
 
-def read_config_file(file_path: os.PathLike[AnyStr]) -> Any | None:
+def read_config_file(file_path: os.PathLike[AnyStr]) -> Optional[Any]:
   """
   Function to read the config file i.e. yaml file and returns a string.
 
@@ -36,7 +36,7 @@ def read_config_file(file_path: os.PathLike[AnyStr]) -> Any | None:
     return config_file.read()
 
 
-def parse_config_file(config_str: str) -> Dict | None:
+def parse_config_file(config_str: str) -> Optional[Dict]:
   """
   Function to parse the config string i.e. a yaml string and returns a Dict.
 

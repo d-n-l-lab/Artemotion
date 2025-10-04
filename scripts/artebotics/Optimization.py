@@ -17,7 +17,7 @@ import glm
 
 import numpy as np
 
-from typing import List, Tuple
+from typing import List, Tuple, Optional, Union
 
 try:
   from scripts.settings.Logger import Logger
@@ -67,7 +67,7 @@ class OptimizedSolver:
     if self._config.Solver == 'Spherical':
       self.ik = SphericalWristInverse(logger=self._logger, robot_config=self._config)
 
-  def _check_ik_solution_within_limits(self, angles: List) -> List | None:
+  def _check_ik_solution_within_limits(self, angles: List) -> Optional[List]:
     """
     Method to check the computed IK solutions against the rotation limits of the axes
     of the robot.
@@ -176,12 +176,12 @@ class OptimizedSolver:
 
     self.fk.compute_using_axes_offsts(axes_angles=axes_angles)
 
-  def compute_ik(self, tg_pose: List | glm.array, axes_angles: List) -> Tuple[glm.array | List]:
+  def compute_ik(self, tg_pose: Union[List, glm.array], axes_angles: List) -> Tuple[Union[glm.array, List]]:
     """
     Method to compute Inverse Kinematic Solution.
 
     Arguments:
-      tg_pose: List | glm.array
+      tg_pose: Union[List, glm.array]
         list or array containing the target pose of the robot
       axes_angles: List
         list containing the current angles of the robot's axes

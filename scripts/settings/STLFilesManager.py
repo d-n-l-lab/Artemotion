@@ -20,7 +20,7 @@ import numpy as np
 
 from io import BufferedReader
 
-from typing import AnyStr, List, Tuple
+from typing import AnyStr, List, Tuple, Optional
 from dataclasses import dataclass, field
 
 try:
@@ -54,7 +54,7 @@ def read_float(logger: Logger, file_obj: BufferedReader) -> None:
     logger.exception("Unable to read float data from the file because:")
     return None
 
-def read_unsigned_int(logger: Logger, file_obj: BufferedReader) -> int | None:
+def read_unsigned_int(logger: Logger, file_obj: BufferedReader) -> Optional[int]:
   """
   Function to read unsigned int data from the given file.
 
@@ -163,7 +163,7 @@ class STLBadLineException(Exception):
   pass
 
 
-@dataclass(kw_only=True)
+@dataclass
 class STL:
 
   """

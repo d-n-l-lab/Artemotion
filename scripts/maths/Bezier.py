@@ -16,7 +16,7 @@ import glm
 import numpy as np
 
 from dataclasses import dataclass, field
-from typing import List
+from typing import List, Union
 
 try:
   from scripts.settings.Logger import Logger
@@ -324,7 +324,7 @@ def bisect(logger: Logger, p: glm.quat, q: glm.quat) -> glm.quat:
     return bisect
 
 
-@dataclass(kw_only=True)
+@dataclass
 class Bezier_N_Deg:
   """
   Class to efficiently compute N-Degree Bezier Curve.
@@ -346,7 +346,7 @@ class Bezier_N_Deg:
 
   _num_samples: int = field(default=100, init=False)
   ratios: List[int] = field(default_factory=list, init=False)
-  points: glm.array | np.ndarray = glm.array(np.array([])).reinterpret_cast(glm.vec3)
+  points: Union[glm.array, List[float], np.ndarray] = field(default_factory=lambda: glm.array(np.array([])).reinterpret_cast(glm.vec3))
 
   def __post_init__(self) -> None:
     """
@@ -581,7 +581,7 @@ class Bezier_N_Deg:
     self._num_samples = value
 
 
-@dataclass(kw_only=True)
+@dataclass
 class SphericalBezier:
   """
   Class to efficiently compute N-Degree Spherical Bezier Curve. This uses De-Casteljau's
@@ -599,7 +599,7 @@ class SphericalBezier:
   _logger: Logger = field(default_factory=DummyLogger, repr=False)
 
   num_samples: int = 100
-  angles: glm.array | np.ndarray = glm.array(np.array([])).reinterpret_cast(glm.vec3)
+  angles: Union[glm.array, List[float], np.ndarray] = field(default_factory=lambda: glm.array(np.array([])).reinterpret_cast(glm.vec3))
 
   def __post_init__(self) -> None:
     """
@@ -713,7 +713,7 @@ class SphericalBezier:
     self.angles = glm.array(np.array([])).reinterpret_cast(glm.vec3)
 
 
-@dataclass(kw_only=True)
+@dataclass
 class BezierSpline:
   """
   Class to compute Spline Curve using Bezier Interpolation.
@@ -731,7 +731,7 @@ class BezierSpline:
 
   _num_samples: int = 100
   logger: Logger = field(default_factory=DummyLogger, repr=False)
-  poses: glm.array | np.ndarray = glm.array(np.array([])).reinterpret_cast(glm.vec3)
+  poses: Union[glm.array, List[float], np.ndarray] = field(default_factory=lambda: glm.array(np.array([])).reinterpret_cast(glm.vec3))
 
   def __post_init__(self):
     # Coordinates interpolation

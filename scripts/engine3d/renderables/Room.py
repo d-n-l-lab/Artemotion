@@ -285,7 +285,7 @@ class Room(Renderable, RoomConstructor):
     self.program.set_vec3(name='uZ_Range', vec=glm.vec3(z_verts[0], z_verts.mean(), z_verts[-1]))
     self.program.release()
 
-  def set_grid_color(self, grid_color: glm.vec3=glm.vec3(0.7, 0.4, 0.2)) -> None:
+  def set_grid_color(self, grid_color: glm.vec3=glm.vec3(0.8, 0.8, 0.8)) -> None:
     """
     Method to setup the grid color.
 

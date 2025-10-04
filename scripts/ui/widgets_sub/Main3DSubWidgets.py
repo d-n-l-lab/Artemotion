@@ -66,8 +66,8 @@ class NavController:
     self._fov = 45.0
     self._depth = 0.0
     self._viewport = glm.vec4(0)
-    self.cam_pos = kwargs.get('cam_pos', glm.vec3(2))
-    self.cam_target = kwargs.get('cam_target', glm.vec3(0, 1, 0))
+    self.cam_pos = kwargs.get('cam_pos', glm.vec3(5, 4, 5))
+    self.cam_target = kwargs.get('cam_target', glm.vec3(0, 0, 0))
 
     # Mouse Filtering
     self.mouse_x = 0
@@ -309,9 +309,9 @@ class Main3DGLWidget(NavController, QOpenGLWidget):
     self._settings = kwargs.get('settings', None)
 
     # widget ambience
-    self.red = 55
-    self.green = 55
-    self.blue = 55
+    self.red = 25
+    self.green = 25
+    self.blue = 35
     self.alpha = 1
 
     self.shift_pressed = False
@@ -547,7 +547,6 @@ class Main3DGLWidget(NavController, QOpenGLWidget):
 
   def paintGL(self) -> None:
     pygl.glClear(pygl.GL_COLOR_BUFFER_BIT | pygl.GL_DEPTH_BUFFER_BIT)
-    pygl.glClearColor(self.red/255, self.green/255, self.blue/255, self.alpha)
 
     try:
       for rend in self._renderables:

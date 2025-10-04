@@ -10,6 +10,8 @@
 ##
 ##############################################################################################
 ##
+from typing import Union
+
 import os
 import sys
 
@@ -174,7 +176,7 @@ class SimRobCtrlSliderWidget(QFrame):
     self._range_adjusted()
 
   @property
-  def min(self) -> int | float:
+  def min(self) -> Union[int, float]:
     """
     Property:
       Returns minimum
@@ -183,7 +185,7 @@ class SimRobCtrlSliderWidget(QFrame):
     return self._min
 
   @min.setter
-  def min(self, value: int | float) -> None:
+  def min(self, value: Union[int, float]) -> None:
     """
     Property setter:
       Sets minimum
@@ -193,7 +195,7 @@ class SimRobCtrlSliderWidget(QFrame):
     self._range_adjusted()
 
   @property
-  def max(self) -> int | float:
+  def max(self) -> Union[int, float]:
     """
     Property:
       Returns maximum
@@ -202,7 +204,7 @@ class SimRobCtrlSliderWidget(QFrame):
     return self._max
 
   @max.setter
-  def max(self, value: int | float) -> None:
+  def max(self, value: Union[int, float]) -> None:
     """
     Property setter:
       Sets maximum

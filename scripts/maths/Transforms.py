@@ -15,7 +15,7 @@ import os
 import sys
 import glm
 
-from typing import List
+from typing import List, Union
 
 try:
   from scripts.settings.Logger import Logger
@@ -354,7 +354,7 @@ def _euler_angles_zyz(mat: glm.mat3) -> glm.vec3:
   return glm.degrees(glm.vec3(round(Θ_z_0, 3), round(Θ_y, 3), round(Θ_z_1, 3)))
 
 def mat_to_euler_angles(logger: Logger, debug: bool=False,
-                        mat: glm.mat3 | glm.mat4=glm.mat3(0), order: str='zyx') -> glm.vec3:
+                        mat: Union[glm.mat3, glm.mat4]=glm.mat3(0), order: str='zyx') -> glm.vec3:
   """
   Function to compute Euler Angles (ABC/RPY) from a given 3x3 rotation matrix or a 4x4
   transformation matrix.
@@ -364,7 +364,7 @@ def mat_to_euler_angles(logger: Logger, debug: bool=False,
       logger class
     debug: bool
       flag to print log message
-    rot_mat: glm.mat3 | glm.mat4
+    rot_mat: Union[glm.mat3, glm.mat4]
       3x3 rotation matrix or 4x4 transformation matrix
 
   Returns:

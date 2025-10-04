@@ -15,13 +15,14 @@ import os
 import sys
 import glm
 
-from typing import List, Dict
+from typing import List, Dict, Union
 from OpenGL import GL as pygl
 from dataclasses import dataclass, field
 
 try:
   from scripts.settings.Logger import Logger
   from scripts.settings.STLFilesManager import STL
+  from scripts.settings.ProceduralGeometry import create_robot_link_geometry
   from scripts.engine3d.renderables.Renderable import Renderable
 except:
   # For development purpose only
@@ -31,6 +32,7 @@ except:
   from config import ConfigRobot
   from scripts.settings.Logger import Logger
   from scripts.settings.STLFilesManager import STL
+  from scripts.settings.ProceduralGeometry import create_robot_link_geometry
   from scripts.engine3d.renderables.Renderable import Renderable
 
 
@@ -65,13 +67,15 @@ class LinkConstructor:
     if len(self.config) == 0:
       self.logger.warning("No configuration data of the link to be parsed")
       return
+
+    self.link = None
     file_type = os.path.splitext(self.config['mesh'])[1][1:].strip().lower()
     if file_type == 'stl':
       try:
         self.link = STL(logger=self.logger,
                         file_name=os.path.join(self.robot, self.config['mesh']))
-      except TypeError as err:
-        self.logger.exception(f"{err}")
+      except (TypeError, FileNotFoundError) as err:
+        self.logger.warning(f"STL file not found, using procedural geometry: {err}")
 
 
 class Link(Renderable, LinkConstructor):
@@ -93,16 +97,27 @@ class Link(Renderable, LinkConstructor):
 
   def parse_mesh_data(self) -> None:
     """
-    Method to parse stl file.
+    Method to parse stl file or generate procedural geometry.
     """
 
+    if self.link is not None:
+      try:
+        self.link.parse_stl()
+        self.indices = glm.array(self.link.stl_data.indices)
+        self.vertices = glm.array(self.link.stl_data.vertices)
+        return
+      except Exception:
+        self._logger.warning("Unable to parse STL file, using procedural geometry")
+
+    # Fallback to procedural geometry
     try:
-      self.link.parse_stl()
+      import numpy as np
+      vertices, indices = create_robot_link_geometry(self.config)
+      self.vertices = glm.array(vertices.flatten().tolist(), glm.float32)
+      self.indices = glm.array(indices.flatten().tolist(), glm.uint32)
+      self._logger.info(f"Created procedural geometry for {self.config.get('name', 'link')}")
     except Exception:
-      self._logger.exception("Unable to parse the stl file because:")
-    else:
-      self.indices = glm.array(self.link.stl_data.indices)
-      self.vertices = glm.array(self.link.stl_data.vertices)
+      self._logger.exception("Unable to create procedural geometry:")
 
   def init_gl(self) -> None:
     """
@@ -136,12 +151,12 @@ class Link(Renderable, LinkConstructor):
       primitive = pygl.GL_TRIANGLES
     super(Link, self).render(primitive)
 
-  def set_link_color(self, link_color: glm.vec4 | List) -> None:
+  def set_link_color(self, link_color: Union[glm.vec4, glm.array, List]) -> None:
     """
     Method to setup the color of the link.
 
     Argument:
-      link_color: glm.vec4 | List
+      link_color: Union[glm.vec4, glm.array, List]
         color of the link
     """
 
