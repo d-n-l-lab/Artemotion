@@ -53,16 +53,19 @@ class PyVistaWorker(QObject):
 
   def parse_room(self, room_params: Dict) -> None:
     """Parse room parameters."""
+    PyVistaLogger.info(f"Worker: Parsing room parameters")
     self.room_data = room_params
     self.renderable_ready.emit("room")
 
-  def parse_robot(self, robot_name: str, robot_config: Dict) -> None:
+  def parse_robot(self, robot_name: str, robot_data: Dict) -> None:
     """Parse robot configuration."""
-    self.robots[robot_name] = robot_config
+    PyVistaLogger.info(f"Worker: Parsing robot {robot_name}")
+    self.robots[robot_name] = robot_data
     self.renderable_ready.emit(robot_name)
 
   def parse_curves(self, curve_points: np.ndarray) -> None:
     """Parse curve data."""
+    PyVistaLogger.info(f"Worker: Parsing curves with {len(curve_points)} points")
     self.curves_data = curve_points
     self.renderable_ready.emit("curves")
 
@@ -232,18 +235,22 @@ class PyVistaWidget(QFrame):
       axes_transforms: List of transformation matrices
     """
     if not robot_config:
+      PyVistaLogger.warning("create_robot_3d called with no robot_config")
       return
 
     robot_name = robot_config.Name
+    PyVistaLogger.info(f"create_robot_3d called for robot: {robot_name}")
     
     if robot_name not in self.robots:
       self.robots[robot_name] = {
         'config': robot_config,
         'transforms': axes_transforms or []
       }
+      PyVistaLogger.info(f"Emitting parse_robot signal for {robot_name}")
       self.parse_robot.emit(robot_name, self.robots[robot_name])
     else:
       # Update existing robot
+      PyVistaLogger.info(f"Updating existing robot {robot_name}")
       self.on_update_robot_model(robot_name, axes_transforms)
 
   def _render_robot(self, robot_name: str) -> None:
@@ -401,12 +408,17 @@ class PyVistaWidget(QFrame):
 
   def on_renderable_ready(self, renderable_name: str) -> None:
     """Called when a renderable is ready to display."""
+    PyVistaLogger.info(f"on_renderable_ready called for: {renderable_name}")
+    
     if renderable_name == "room":
       self._render_room(self.worker.room_data)
     elif renderable_name == "curves":
       self._render_curves(self.worker.curves_data)
     elif renderable_name in self.worker.robots:
+      PyVistaLogger.info(f"Rendering robot {renderable_name}")
       self._render_robot(renderable_name)
+    else:
+      PyVistaLogger.warning(f"Unknown renderable: {renderable_name}")
 
   def on_update_robot_model_req_recvd(self, robot_name: str, axes_transforms: List) -> bool:
     """
