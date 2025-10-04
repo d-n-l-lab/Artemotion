@@ -231,15 +231,35 @@ class PyVistaWidget(QFrame):
     Create or update a 3D robot.
     
     Arguments:
-      robot_config: Robot configuration object
+      robot_config: Robot configuration object  
       axes_transforms: List of transformation matrices
     """
-    if not robot_config:
-      PyVistaLogger.warning("create_robot_3d called with no robot_config")
+    PyVistaLogger.info(f"create_robot_3d called with robot_config type: {type(robot_config)}, axes_transforms: {axes_transforms is not None}")
+    
+    # Handle empty dict (happens when signal type conversion fails)
+    if isinstance(robot_config, dict) and len(robot_config) == 0:
+      PyVistaLogger.warning("create_robot_3d received empty dict - ignoring (robot not ready yet)")
+      return
+    
+    if not robot_config or robot_config is None:
+      PyVistaLogger.warning(f"create_robot_3d called with no robot_config (value: {robot_config})")
       return
 
-    robot_name = robot_config.Name
-    PyVistaLogger.info(f"create_robot_3d called for robot: {robot_name}")
+    # Handle case where robot_config might be a dict
+    if isinstance(robot_config, dict):
+      PyVistaLogger.warning("robot_config is a dict, trying to extract config")
+      if 'config' in robot_config:
+        robot_config = robot_config['config']
+      else:
+        PyVistaLogger.error(f"robot_config dict doesn't have 'config' key, keys: {robot_config.keys()}")
+        return
+
+    try:
+      robot_name = robot_config.Name
+      PyVistaLogger.info(f"create_robot_3d for robot: {robot_name} with {len(axes_transforms) if axes_transforms else 0} transforms")
+    except AttributeError as e:
+      PyVistaLogger.exception(f"robot_config doesn't have Name attribute: {e}")
+      return
     
     if robot_name not in self.robots:
       self.robots[robot_name] = {
@@ -273,9 +293,6 @@ class PyVistaWidget(QFrame):
     # Create robot links
     actors = []
     
-    # Import Link class to parse meshes
-    from scripts.engine3d.renderables.Link import Link
-    
     # Color palette for robot links (RGB tuples)
     colors = [
       [1.0, 0.42, 0.42],  # Red
@@ -290,37 +307,58 @@ class PyVistaWidget(QFrame):
     links_dict = robot_config.Links
     for idx, (link_name, link_config) in enumerate(links_dict.items()):
       try:
-        # Create Link object and parse mesh data
-        link = Link(
-          sh_file='link',
-          robot=robot_config.Name,
-          config=link_config,
-          logger=PyVistaLogger
-        )
+        import numpy as np
+        from scripts.settings.STLFilesManager import STL
+        from scripts.settings import PathManager
+        from scripts.settings.ProceduralGeometry import create_robot_link_geometry
         
-        # Parse the mesh data (loads STL or creates procedural geometry)
-        link.parse_mesh_data()
+        vertices = None
+        indices = None
+        
+        # Try to load STL file first
+        try:
+          stl_file = STL(logger=PyVistaLogger,
+                        file_name=os.path.join(robot_config.Name, link_config['mesh']))
+          stl_file.parse_stl()
+          # Convert glm arrays to numpy
+          vertices = np.array(stl_file.stl_data.vertices).reshape(-1, 3)
+          indices = np.array(stl_file.stl_data.indices, dtype=np.int32)
+          PyVistaLogger.info(f"Loaded STL for {link_name}")
+        except Exception as e:
+          PyVistaLogger.warning(f"STL not found for {link_name}, using procedural geometry: {e}")
+          # Fall back to procedural geometry
+          try:
+            v, i = create_robot_link_geometry(link_config)
+            vertices = v  # Already numpy array
+            indices = i   # Already numpy array
+            PyVistaLogger.info(f"Created procedural geometry for {link_name}")
+          except Exception as e2:
+            PyVistaLogger.exception(f"Unable to create procedural geometry for {link_name}: {e2}")
+            continue
         
         # Check if we have valid mesh data
-        if not hasattr(link, 'vertices') or not hasattr(link, 'indices'):
+        if vertices is None or indices is None:
           PyVistaLogger.warning(f"No mesh data for {link_name}, skipping")
           continue
           
-        if len(link.vertices) == 0 or len(link.indices) == 0:
+        # Ensure vertices are in correct shape
+        if vertices.ndim == 1:
+          vertices = vertices.reshape(-1, 3)
+          
+        # Flatten indices if needed (procedural geometry returns Nx3 array)
+        if indices.ndim == 2:
+          indices = indices.flatten()
+          
+        if len(vertices) == 0 or len(indices) == 0:
           PyVistaLogger.warning(f"Empty mesh data for {link_name}, skipping")
           continue
-        
-        # Convert glm arrays to numpy
-        import numpy as np
-        vertices = np.array(link.vertices).reshape(-1, 3)
-        indices = np.array(link.indices, dtype=np.int32)
         
         # Create PyVista mesh from vertices and indices
         # Indices need to be in format: [n_points, idx1, idx2, ..., n_points, idx1, idx2, ...]
         faces = []
         for i in range(0, len(indices), 3):
           if i + 2 < len(indices):
-            faces.extend([3, indices[i], indices[i+1], indices[i+2]])
+            faces.extend([3, int(indices[i]), int(indices[i+1]), int(indices[i+2])])
         
         if len(faces) == 0:
           PyVistaLogger.warning(f"No faces created for {link_name}")
@@ -329,12 +367,16 @@ class PyVistaWidget(QFrame):
         faces = np.array(faces, dtype=np.int32)
         mesh = pv.PolyData(vertices, faces)
         
-        # Apply transform if available
+        # Apply cumulative transform for kinematic chain
+        # Each link's transform should be: base * link1 * link2 * ... * linkN
         if idx > 0 and len(transforms) >= idx:
-          transform = transforms[idx - 1]
-          # Convert glm matrix to numpy 4x4
-          mat = np.array(transform).reshape(4, 4).T  # Transpose for VTK convention
-          mesh.transform(mat)
+          # Accumulate transforms from base to current link
+          cumulative_transform = np.eye(4)
+          for i in range(idx):
+            if i < len(transforms):
+              link_transform = np.array(transforms[i]).reshape(4, 4).T  # Transpose for VTK
+              cumulative_transform = cumulative_transform @ link_transform
+          mesh.transform(cumulative_transform)
         
         # Add mesh to scene with color
         color = colors[idx % len(colors)]
@@ -368,18 +410,25 @@ class PyVistaWidget(QFrame):
     
     self.parse_curves.emit(poses)
 
-  def _render_curves(self, curve_points: np.ndarray) -> None:
+  def _render_curves(self, curve_points) -> None:
     """Render curves from points."""
     # Remove old curves
     if self.curves_actor is not None:
       self.plotter.remove_actor(self.curves_actor)
 
     try:
-      # Reshape points if needed
-      if curve_points.ndim == 1:
-        points = curve_points.reshape(-1, 3)
+      # Convert glm.array to numpy if needed
+      import numpy as np
+      if hasattr(curve_points, '__iter__') and not isinstance(curve_points, np.ndarray):
+        points = np.array(curve_points, dtype=np.float32)
       else:
         points = curve_points
+        
+      # Reshape points if needed
+      if points.ndim == 1:
+        points = points.reshape(-1, 3)
+      else:
+        points = points
 
       # Create spline
       spline = pv.Spline(points, n_points=len(points)*2)

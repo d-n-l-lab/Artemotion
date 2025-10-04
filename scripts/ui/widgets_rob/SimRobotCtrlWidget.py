@@ -217,7 +217,7 @@ class SimRobotCtrlWidget(SimRobotCtrlWdgtFunc, QFrame):
       signal emitted to publish robots added
     sim_rob_ctrl_curves_ik_solutions: Signal(list)
       signal emitted to publish the ik solutions of curves/path data
-    sim_rob_ctrl_create_update_robot_in_3d: Signal(dict, list)
+    sim_rob_ctrl_create_update_robot_in_3d: Signal(object, list)
       signal emitted to create or update the robot in 3d
   """
 
@@ -226,7 +226,7 @@ class SimRobotCtrlWidget(SimRobotCtrlWdgtFunc, QFrame):
   sim_rob_ctrl_current_pose = Signal(dict)
   sim_rob_ctrl_added_robots = Signal(list)
   sim_rob_ctrl_curves_ik_solutions = Signal(str, list)
-  sim_rob_ctrl_create_update_robot_in_3d = Signal(dict, list)
+  sim_rob_ctrl_create_update_robot_in_3d = Signal(object, list)
 
   def __init__(self, **kwargs) -> None:
     kwargs['logger'] = SimRobotCtrlUILogger
